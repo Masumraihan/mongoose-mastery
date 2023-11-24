@@ -5,6 +5,27 @@ const createUserIntoDb = async (user: TUser) => {
   const result = await UserModel.create(user);
   return result;
 };
+
+const getAllUsersFromDb = async () => {
+  const result = await UserModel.find();
+  return result;
+};
+
+const getSingleUserFromDb = async (userId: string) => {
+  const result = await UserModel.findOne({ userId });
+  return result;
+};
+
+//const UpdateUserIntoDb = async (userId: string, userInfo) => {};
+
+const deleteUserFromDb = async (userId: string) => {
+  const result = await UserModel.deleteOne({ userId });
+  return result;
+};
+
 export const UserServices = {
   createUserIntoDb,
+  getAllUsersFromDb,
+  getSingleUserFromDb,
+  deleteUserFromDb,
 };
