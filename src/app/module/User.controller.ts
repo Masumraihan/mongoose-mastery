@@ -6,6 +6,7 @@ import UpdateUserInfoValidationSchema from './UpdatedUserData.validation';
 const createUser = async (req: Request, res: Response) => {
   try {
     const userData = req.body;
+     //VALIDATE USER INFO USING ZOD
     const data = UserValidationSchema.parse(userData);
     const result = await UserServices.createUserIntoDb(data);
     res.status(200).json({
