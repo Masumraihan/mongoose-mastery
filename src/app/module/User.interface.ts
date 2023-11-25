@@ -26,3 +26,14 @@ export type TUser = {
   address: TAddress;
   orders?: TOrders[];
 };
+
+export type TUpdateUserInfo = {
+  userId: number;
+  username: string;
+  fullName: TFullName;
+  age: number;
+  email: string;
+  isActive: boolean;
+  hobbies: string[];
+  address: TAddress;
+};

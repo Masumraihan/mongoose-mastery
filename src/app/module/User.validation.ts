@@ -1,17 +1,17 @@
 import { z } from 'zod';
 
-const FullNameValidationSchema = z.object({
+export const FullNameValidationSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
 });
 
-const AddressValidationSchema = z.object({
+export const AddressValidationSchema = z.object({
   street: z.string().min(1),
   city: z.string().min(1),
   country: z.string().min(1),
 });
 
-const OrderValidationSchema = z.object({
+export const OrderValidationSchema = z.object({
   productName: z.string().min(1),
   price: z.number().nonnegative(),
   quantity: z.number().positive(),
