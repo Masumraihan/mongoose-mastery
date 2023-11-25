@@ -59,6 +59,28 @@ const getSingleUser = async (req: Request, res: Response) => {
   }
 };
 
+const updateUser = async (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+    const userInfo = req.body;
+    const result = await UserServices.UpdateUserIntoDb(userId, userInfo);
+    res.status(200).json({
+      success: true,
+      message: 'Users Updated successfully!',
+      data: result,
+    });
+  } catch (error) {
+    res.status(404).json({
+      success: false,
+      message: 'User not found',
+      error: {
+        code: 404,
+        description: 'User not found!',
+      },
+    });
+  }
+};
+
 const deleteUser = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
@@ -84,5 +106,6 @@ export const UserControllers = {
   createUser,
   getAllUsers,
   getSingleUser,
+  updateUser,
   deleteUser,
 };
