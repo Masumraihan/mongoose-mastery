@@ -1,7 +1,12 @@
-<h1>Getting Started</h1>
+[![Copy to Clipboard](https://img.shields.io/badge/Copy-%20%20-blue)](javascript:void(0))
 
-- Clone git repo <br>
-  <a href="https://github.com/panzerdp/clipboardy">https://github.com/panzerdp/clipboardy<a>
+<details>
+<summary>Instructions</summary>
 
-- Run this command <br>
-  <code>npm install<code/>
+### Getting Started
+
+- Clone git repo [https://github.com/panzerdp/clipboardy](https://github.com/panzerdp/clipboardy)
+- Run this command: `npm install`
+
+</details>
+
