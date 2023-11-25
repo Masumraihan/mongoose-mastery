@@ -1,5 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { TAddress, TFullName, TOrders, TUser } from './User.interface';
+import bcrypt from 'bcrypt';
+import config from '../config';
 
 const FullNameSchema = new Schema<TFullName>({
   firstName: {
@@ -73,6 +75,20 @@ const UserSchema = new Schema<TUser>({
     required: [true, 'User Address is required'],
   },
   orders: [OrderSchema],
+});
+
+// USE A PRE MIDDLEWARE FOR PASSWORD HASHING
+UserSchema.pre('save', async function (next) {
+  // eslint-disable-next-line @typescript-eslint/no-this-alias
+  const user = this;
+  user.password = await bcrypt.hash(user.password, Number(config.bcrypt_salt));
+  next();
+});
+
+// USE A POST MIDDLEWARE FOR REMOVE PASSWORD FROM USER DOCUMENTS
+UserSchema.post('save', function (doc, next) {
+  doc.password = '';
+  next();
 });
 
 export const UserModel = model<TUser>('User', UserSchema);
